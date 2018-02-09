@@ -8,6 +8,34 @@ process.on(`exit`, (code) => {
   console.log(`Exit code: ${code}`);
 });
 
+class Mayday {
+  constructor(value) {
+    this.value = value;
+  }
+
+  inspect(depth, options) {
+    if (depth < 0) {
+      return options.stylize('[Box]', 'regexp');
+    }
+
+    const newOptions = Object.assign({}, options, {
+      depth: options.depth === null ? null : options.depth - 1,
+      colors: true
+    });
+
+    const inner = util.inspect(this.value, newOptions);
+    return `${options.stylize('Box', 'regexp')}< ${inner} >`;
+
+  }
+}
+
+const cat = new Mayday('Кекс');
+
+console.log(util.inspect(cat));
+
+
+
+
 if(!args[0]) {
   console.log(util.format
   ( `%s\n%s\n%s`,
