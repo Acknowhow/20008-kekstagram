@@ -9,31 +9,34 @@ process.on(`exit`, (code) => {
 });
 
 class Mayday {
-  constructor(value) {
-    this.value = value;
+  constructor(string, color) {
+    this.string = string;
+    this.color = color;
+
   }
 
   inspect(depth, options) {
     if (depth < 0) {
-      return options.stylize('[Box]', 'regexp');
-    }
+      return options.stylize(`[Box]`, this.color);
 
+    }
     const newOptions = Object.assign({}, options, {
       depth: options.depth === null ? null : options.depth - 1,
-      colors: true
-    });
 
-    const inner = util.inspect(this.value, newOptions);
-    return `${options.stylize('Box', 'regexp')}< ${inner} >`;
+    });
+    const string = this.string === null ? `${void(0)}` : this.string;
+
+    const inner = util.inspect(string, newOptions);
+    return `${options.stylize('Box', this.color)}` + `${inner}`;
 
   }
 }
 
-const cat = new Mayday('Кекс');
+const cat = new Mayday(null, `regexp`);
 
-console.log(util.inspect(cat));
+console.log(util.inspect(cat, {colors: true}));
 
-
+console.log(cat);
 
 
 if(!args[0]) {
@@ -53,9 +56,11 @@ else {
         `Доступные команды:\n`
 
       ));
+
       console.log(`--help  – печатает этот текст;`);
       console.log(`--version – печатает версию приложения`);
       break;
+
     case `--version`:
       console.log(`v0.0.1`);
 
