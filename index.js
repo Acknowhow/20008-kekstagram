@@ -1,24 +1,23 @@
-const format = require(`./lib/format`);
+const Format = require(`./lib/format`);
 const util = require(`util`);
 
 const args = process.argv.slice(2);
-
-const Format = format(args[0], util);
+const catFormat = new Format(args[0], util);
 
 process.on(`exit`, (code) => {
   console.log(`Exit code: ${code}`);
 });
 
-if(!Format) {
-  console.log(Format._default);
+if(!args[0]) {
+  console.log(catFormat.default());
   process.exit(0);
 }
 
 else {
-  switch (Format) {
+  switch (catFormat) {
 
     case `--help`:
-      console.log(Format._help);
+      console.log(catFormat.help());
       process.exit(0);
       break;
 
@@ -28,7 +27,7 @@ else {
       break;
 
     default:
-      console.error(util.inspect(Format._error, {colors: true}));
+      console.error(util.inspect(catFormat.error(), {colors: true}));
       process.exit(1);
 
   }
