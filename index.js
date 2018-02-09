@@ -1,55 +1,34 @@
+const format = require(`./lib/format`);
 const util = require(`util`);
-const path = require(`path`);
 
-const Color = require(`./lib/color`);
-
-const name = path.basename(process.cwd());
 const args = process.argv.slice(2);
+
+const Format = format(args[0], util);
 
 process.on(`exit`, (code) => {
   console.log(`Exit code: ${code}`);
 });
 
-const _default = util.format
-( `\n%s\n%s\n%s\n`,
-  `Привет пользователь!`,
-  `Эта программа будет запускать сервер «{{ ${name} }}».`,
-  `Автор: Кекс.`
-);
-
-const _help = util.format
-( `\n%s\n%s\n%s\n`,
-  `Доступные команды:`,
-  `--help – печатает этот текст;`,
-  `--version – печатает версию приложения;`
-);
-
-const _error = new Color(util.format
-( `\n%s\n%s\n`,
-  `Неизвестная команда {{ ${args[0]} }}`,
-  `Чтобы прочитать правила использования приложения, наберите "--help"`
-), `regexp`);
-
-
-if(!args[0]) {
-  console.log(_default);
+if(!Format) {
+  console.log(Format._default);
   process.exit(0);
 }
 
 else {
-  switch (args[0]) {
+  switch (Format) {
 
     case `--help`:
-      console.log(_help);
+      console.log(Format._help);
       process.exit(0);
       break;
 
     case `--version`:
       console.log(`v0.0.1`);
+      process.exit(0);
       break;
 
     default:
-      console.error(util.inspect(_error, {colors: true}));
+      console.error(util.inspect(Format._error, {colors: true}));
       process.exit(1);
 
   }
