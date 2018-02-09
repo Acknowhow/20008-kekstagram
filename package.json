@@ -1,0 +1,25 @@
+{
+  "name": "20008-kekstagram",
+  "version": "0.0.1",
+  "description": "Keks unchained",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Acknowhow/20008-kekstagram.git"
+  },
+  "keywords": [
+    "Keks"
+  ],
+  "author": "Вадим Корабельник",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Acknowhow/20008-kekstagram/issues"
+  },
+  "homepage": "https://github.com/Acknowhow/20008-kekstagram#readme"
+}
