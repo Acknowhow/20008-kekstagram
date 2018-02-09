@@ -14,7 +14,7 @@ if(!args[0]) {
 }
 
 else {
-  switch (catFormat) {
+  switch (args[0]) {
 
     case `--help`:
       console.log(catFormat.help());
@@ -22,14 +22,13 @@ else {
       break;
 
     case `--version`:
-      console.log(`v0.0.1`);
+      console.log(`\nv0.0.1\n`);
       process.exit(0);
       break;
 
     default:
       console.error(util.inspect(catFormat.error(), {colors: true}));
       process.exit(1);
-
   }
 }
 
