@@ -1,21 +1,30 @@
+const path = require(`path`);
+const util = require(`util`);
+
+const name = path.basename(process.cwd());
 const args = process.argv.slice(2);
 
-process.on('exit', (code) => {
-  console.log(`About to exit with code: ${code}`);
+process.on(`exit`, (code) => {
+  console.log(`Exit code: ${code}`);
 });
 
 if(!args[0]) {
-  console.log(`Привет пользователь!` +
-              `Эта программа будет запускать сервер` +
-               `«{{ имя вашего проекта }}».` +
-               `Автор: Кекс.`);
+  console.log(util.format
+  ( `%s\n%s\n%s`,
+    `Привет пользователь!`,
+    `Эта программа будет запускать сервер «{{ ${name} }}».`,
+    `${util.inspect(`e`)}Автор: Кекс.`
+  ));
   process.exit(0);
 }
 
 else {
   switch (args[0]) {
     case `--help`:
-      console.log(`Доступные команды:`);
+      console.log(util.format(
+        `Доступные команды:\n`
+
+      ));
       console.log(`--help  – печатает этот текст;`);
       console.log(`--version – печатает версию приложения`);
       break;
