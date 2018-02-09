@@ -8,35 +8,29 @@ process.on(`exit`, (code) => {
   console.log(`Exit code: ${code}`);
 });
 
-class Mayday {
+class Color {
   constructor(string, color) {
     this.string = string;
     this.color = color;
-
   }
 
   inspect(depth, options) {
-    if (depth < 0) {
-      return options.stylize(`[Box]`, this.color);
-
-    }
     const newOptions = Object.assign({}, options, {
       depth: options.depth === null ? null : options.depth - 1,
 
     });
-    const string = this.string === null ? `${void(0)}` : this.string;
 
-    const inner = util.inspect(string, newOptions);
-    return `${options.stylize('Box', this.color)}` + `${inner}`;
+    const inner = util.inspect(this.string, newOptions);
+    return `${options.stylize(inner, this.color)}`;
 
   }
 }
 
-const cat = new Mayday(null, `regexp`);
+const color = new Color(null, `regexp`);
 
-console.log(util.inspect(cat, {colors: true}));
+console.log(util.inspect(color, {colors: true}));
 
-console.log(cat);
+console.log(color);
 
 
 if(!args[0]) {
