@@ -8,12 +8,10 @@ process.on(`exit`, (code) => {
   console.log(`Exit code: ${code}`);
 });
 
-if(!args[0]) {
+if (!args[0]) {
   console.log(catFormat.default());
   process.exit(0);
-}
-
-else {
+} else {
   switch (args[0]) {
 
     case `--help`:
@@ -31,6 +29,5 @@ else {
       process.exit(1);
   }
 }
-
 
 
