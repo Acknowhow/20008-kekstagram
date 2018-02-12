@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/Acknowhow/20008-kekstagram#readme",
   "devDependencies": {
-    "eslint": "^4.17.0",
-    "eslint-config-htmlacademy": "^0.4.2"
+    "eslint": "4.17.0",
+    "eslint-config-htmlacademy": "0.4.2"
   }
 }
