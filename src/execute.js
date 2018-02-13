@@ -5,7 +5,7 @@ module.exports = {
     const util = require(`util`);
 
     const Color = require(`./../lib/color`);
-    const Formatist = require(`./builder/formatist`);
+    const Format = require(`./builder/format`);
 
     // commands
     const cAuthor = require(`./commands/author`);
@@ -28,7 +28,7 @@ module.exports = {
 
     // default
     if (!args[0]) {
-      console.log(new Formatist(cDefault.execute(
+      console.log(new Format(cDefault.execute(
 
           app, util.inspect(
               authorCl, {colors: true})), util).output());
@@ -39,28 +39,28 @@ module.exports = {
       switch (args[0]) {
 
         case `--description`:
-          console.log(new Formatist(cDescription.execute(
+          console.log(new Format(cDescription.execute(
               json.description), util).output());
 
           process.exit(0);
           break;
 
         case `--author`:
-          console.log(new Formatist(cAuthor.execute(
+          console.log(new Format(cAuthor.execute(
               json.author), util).output());
 
           process.exit(0);
           break;
 
         case `--help`:
-          console.log(new Formatist(cHelp.execute(
+          console.log(new Format(cHelp.execute(
           ), util).output());
 
           process.exit(0);
           break;
 
         case `--version`:
-          console.log(new Formatist(cVersion.execute(
+          console.log(new Format(cVersion.execute(
               json.version), util).output());
 
           process.exit(0);
@@ -70,13 +70,13 @@ module.exports = {
         default:
           // first display error message
           console.error(util.inspect(
-              new Color(new Formatist(
+              new Color(new Format(
 
                   cError.execute(args[0]), util).output(),
               `regexp`), {colors: true}));
 
           // then display all available commands
-          console.log(new Formatist(cHelp.execute(), util).output());
+          console.log(new Format(cHelp.execute(), util).output());
           process.exit(1);
       }
     }

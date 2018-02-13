@@ -1,4 +1,4 @@
-class Formatist {
+class Format {
   constructor(input, util) {
     this._input = input;
     this._util = util;
@@ -12,7 +12,7 @@ class Formatist {
 
   // get format options
   _format() {
-    return this._input.map(function (val, index, array) {
+    return this._input.map((val, index, array) => {
 
       if (index === array.length - 1) {
         return `\n%s\n`;
@@ -21,10 +21,10 @@ class Formatist {
 
         return `\n%s`;
       }
-    }).reduce(function (prev, curr) {
+    }).reduce((prev, curr) => {
       return prev + curr;
     });
   }
 }
 
-module.exports = Formatist;
+module.exports = Format;
