@@ -9,7 +9,7 @@ module.exports = {
 
 
     const colorize = require(`./builder/color`);
-    const auth = colorize.color(util);
+    const auth = colorize.color(`Кекс`, null, util);
 
     console.log(auth);
 

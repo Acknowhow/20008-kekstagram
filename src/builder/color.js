@@ -1,13 +1,10 @@
 module.exports = {
+  color(string, color, util) {
 
-  color(util) {
     const Color = require(`./../../lib/color`);
+    const colorized = new Color(`${string}`, `${color}`);
 
-    const keks = new Color(`Кекс`, `regexp`);
-
-    return `${util.inspect(keks, {colors: true})}`;
+    return `${util.inspect(colorized, {colors: true})}`;
 
   }
-
-
 }
