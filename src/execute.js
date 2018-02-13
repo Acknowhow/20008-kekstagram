@@ -8,6 +8,12 @@ module.exports = {
     const Format = require(`./builder/format`);
 
 
+    const colorize = require(`./builder/color`);
+    const auth = colorize.color(util);
+
+    console.log(auth);
+
+
     // commands
     const cAuthor = require(`./commands/author`);
     const cDefault = require(`./commands/default`);
