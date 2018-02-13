@@ -2,9 +2,9 @@ module.exports = {
   name: `--description`,
   description: `Shows app description`,
 
-  execute(_description) {
+  execute(description) {
     return [
-      `${_description}`
+      `${description}`
     ]
   }
 };

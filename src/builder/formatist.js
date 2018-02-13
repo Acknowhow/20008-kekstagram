@@ -10,8 +10,7 @@ class Formatist {
     );
   }
 
-// Use array reduce to concat and get format options
-
+// get format options
   _format() {
     return this._input.map(function (val, index, array) {
       if (index === array.length - 1) {

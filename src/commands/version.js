@@ -2,9 +2,9 @@ module.exports = {
   name: `--version`,
   description: `Shows program version`,
 
-  execute(_version) {
+  execute(version) {
     return [
-      `${_version}`
+      `${version}`
     ]
   }
 };

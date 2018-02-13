@@ -1,8 +1,8 @@
-const execute = module.exports = {
-  _exec() {
+module.exports = {
+  exec() {
+
     const json = require(`../package.json`);
     const util = require(`util`);
-    const path = require(`path`);
 
     const Color = require(`./../lib/color`);
     const Formatist = require(`./builder/formatist`);
@@ -18,7 +18,7 @@ const execute = module.exports = {
     const c_version = require(`./commands/help`);
 
     const args = process.argv.slice(2);
-    const app = path.basename(process.cwd());
+    const app = json.name;
 
     const author_cl = new Color(`Автор: Кекс`, null);
 

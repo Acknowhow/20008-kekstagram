@@ -2,9 +2,9 @@ module.exports = {
   name: `--author`,
   description: `Shows app author`,
 
-  execute(_author) {
+  execute(author) {
     return [
-      `${_author}`
+      `${author}`
     ]
   }
 };

@@ -1,11 +1,11 @@
 module.exports = {
   name: `default`,
   description: `default action`,
-  execute(_app, _author) {
+  execute(app, author) {
     return [
       `Привет пользователь!`,
-      `Эта программа будет запускать сервер «{{ ${_app} }}».`,
-      `${_author}`
+      `Эта программа будет запускать сервер «{{ ${app} }}».`,
+      `${author}`
     ]
   }
 };

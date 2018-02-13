@@ -1,9 +1,9 @@
 module.exports = {
   name: `error`,
   description: `unknown command`,
-  execute(_command) {
+  execute(command) {
     return [
-      `Неизвестная команда {{ ${_command} }}`,
+      `Неизвестная команда {{ ${command} }}`,
       `Чтобы прочитать правила использования приложения, наберите "--help"`
     ]
   }
