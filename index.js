@@ -8,14 +8,17 @@ process.on(`exit`, (code) => {
   console.log(`Exit code: ${code}`);
 });
 
+
+
 if (!args[0]) {
   console.log(catFormat.default());
+
   process.exit(0);
 } else {
   switch (args[0]) {
 
     case `--help`:
-      console.log(catFormat.help());
+      console.log(util.inspect(catFormat.help(), {colors: true}));
       process.exit(0);
       break;
 
