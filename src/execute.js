@@ -8,17 +8,15 @@ module.exports = {
     const Format = require(`./builder/format`);
 
     // const style = require(`./commands/style`);
-
     // console.log(style.author());
 
 
     // const colorize = require(`./builder/color`);
     // const auth = colorize.color(`Кекс`, null, util);
-    //
-    // console.log(auth);
 
+    const convey = require(`./../src/commands/convey`).style();
 
-    const conv = require(`./../src/commands/convey`).style();
+    console.log(convey[`inner`]);
     // commands
     const cAuthor = require(`./commands/list/author`);
     const cDefault = require(`./commands/list/default`);

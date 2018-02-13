@@ -9,11 +9,17 @@ module.exports = {
 
     const author = require(`./list/author`);
 
-    const colorist = colorize.color(`Кекс`, null, util);
+    return {
+      out: colorize.color(`Кекс`, null, util),
 
-    console.log(colorist);
+      inner: colorize.color(`ADF`, `regexp`, util)
+    }
+
+
+
 
   },
 
 
-}
+
+};
