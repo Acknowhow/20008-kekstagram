@@ -5,6 +5,6 @@ module.exports = {
   execute(version) {
     return [
       `${version}`
-    ]
+    ];
   }
 };

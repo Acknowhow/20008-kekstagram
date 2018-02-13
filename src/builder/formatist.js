@@ -6,22 +6,24 @@ class Formatist {
 
   output() {
     return this._util.format(
-      this._format(this._input), ...this._input
+        this._format(), ...this._input
     );
   }
 
-// get format options
+  // get format options
   _format() {
     return this._input.map(function (val, index, array) {
-      if (index === array.length - 1) {
 
+      if (index === array.length - 1) {
         return `\n%s\n`;
-      }  else {
+
+      } else {
 
         return `\n%s`;
       }
-    }).reduce(function(prev, curr) {
-      return prev + curr});
+    }).reduce(function (prev, curr) {
+      return prev + curr;
+    });
   }
 }
 

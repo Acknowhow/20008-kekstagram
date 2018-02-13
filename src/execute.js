@@ -8,19 +8,19 @@ module.exports = {
     const Formatist = require(`./builder/formatist`);
 
     // commands
-    const c_author = require(`./commands/author`);
-    const c_default = require(`./commands/default`);
+    const cAuthor = require(`./commands/author`);
+    const cDefault = require(`./commands/default`);
 
-    const c_description = require(`./commands/description`);
-    const c_error = require(`./commands/error`);
+    const cDescription = require(`./commands/description`);
+    const cError = require(`./commands/error`);
 
-    const c_help = require(`./commands/help`);
-    const c_version = require(`./commands/help`);
+    const cHelp = require(`./commands/help`);
+    const cVersion = require(`./commands/help`);
 
     const args = process.argv.slice(2);
     const app = json.name;
 
-    const author_cl = new Color(`Автор: Кекс`, null);
+    const authorCl = new Color(`Автор: Кекс`, null);
 
     process.on(`exit`, (code) => {
       console.log(`Exit code: ${code}`);
@@ -28,55 +28,58 @@ module.exports = {
 
     // default
     if (!args[0]) {
-      console.log(new Formatist(c_default.execute(
+      console.log(new Formatist(cDefault.execute(
 
-        app, util.inspect(author_cl, {colors: true})),
-        util).output());
+          app, util.inspect(
+              authorCl, {colors: true})), util).output());
+
       process.exit(0);
     } else {
 
       switch (args[0]) {
 
         case `--description`:
+          console.log(new Formatist(cDescription.execute(
+              json.description), util).output());
 
-          console.log(new Formatist(c_description.execute(
-            json.description), util).output());
           process.exit(0);
           break;
 
         case `--author`:
+          console.log(new Formatist(cAuthor.execute(
+              json.author), util).output());
 
-          console.log(new Formatist(c_author.execute(
-            json.author), util).output());
           process.exit(0);
           break;
 
         case `--help`:
-
-          console.log(new Formatist(c_help.execute(
+          console.log(new Formatist(cHelp.execute(
           ), util).output());
+
           process.exit(0);
           break;
 
         case `--version`:
+          console.log(new Formatist(cVersion.execute(
+              json.version), util).output());
 
-          console.log(new Formatist(c_version.execute(
-            json.version), util).output());
           process.exit(0);
           break;
 
         // wrong command
         default:
           // first display error message
-          console.error(util.inspect(new Color(new Formatist(
-            c_error.execute(args[0]), util).output(),
-            `regexp`), {colors: true}));
+          console.error(util.inspect(
+              new Color(new Formatist(
+
+                  cError.execute(args[0]), util).output(),
+              `regexp`), {colors: true}));
 
           // then display all available commands
-          console.log(new Formatist(c_help.execute(), util).output());
+          console.log(new Formatist(cHelp.execute(), util).output());
           process.exit(1);
       }
     }
   }
-}
+};
 

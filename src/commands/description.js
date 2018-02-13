@@ -5,6 +5,6 @@ module.exports = {
   execute(description) {
     return [
       `${description}`
-    ]
+    ];
   }
 };
