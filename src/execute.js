@@ -7,22 +7,27 @@ module.exports = {
     const Color = require(`./../lib/color`);
     const Format = require(`./builder/format`);
 
+    // const style = require(`./commands/style`);
 
-    const colorize = require(`./builder/color`);
-    const auth = colorize.color(`Кекс`, null, util);
-
-    console.log(auth);
+    // console.log(style.author());
 
 
+    // const colorize = require(`./builder/color`);
+    // const auth = colorize.color(`Кекс`, null, util);
+    //
+    // console.log(auth);
+
+
+    const conv = require(`./../src/commands/convey`).style();
     // commands
-    const cAuthor = require(`./commands/author`);
-    const cDefault = require(`./commands/default`);
+    const cAuthor = require(`./commands/list/author`);
+    const cDefault = require(`./commands/list/default`);
 
-    const cDescription = require(`./commands/description`);
-    const cError = require(`./commands/error`);
+    const cDescription = require(`./commands/list/description`);
+    const cError = require(`./commands/list/error`);
 
-    const cHelp = require(`./commands/help`);
-    const cVersion = require(`./commands/help`);
+    const cHelp = require(`./commands/list/help`);
+    const cVersion = require(`./commands/list/help`);
 
     const args = process.argv.slice(2);
     const app = json.name;
@@ -33,8 +38,7 @@ module.exports = {
 
     const major = new Color(splitVersion[0], `regexp`);
 
-    console.log(major);
-
+    // console.log(major);
 
 
     process.on(`exit`, (code) => {

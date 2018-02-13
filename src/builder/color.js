@@ -5,6 +5,5 @@ module.exports = {
     const colorized = new Color(`${string}`, `${color}`);
 
     return `${util.inspect(colorized, {colors: true})}`;
-
   }
 }
