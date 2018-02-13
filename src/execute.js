@@ -7,6 +7,7 @@ module.exports = {
     const Color = require(`./../lib/color`);
     const Format = require(`./builder/format`);
 
+
     // commands
     const cAuthor = require(`./commands/author`);
     const cDefault = require(`./commands/default`);
@@ -22,9 +23,18 @@ module.exports = {
 
     const authorCl = new Color(`Автор: Кекс`, null);
 
+    const splitVersion = json.version.split(`.`);
+
+    const major = new Color(splitVersion[0], `regexp`);
+
+    console.log(major);
+
+
+
     process.on(`exit`, (code) => {
       console.log(`Exit code: ${code}`);
     });
+
 
     // default
     if (!args[0]) {
