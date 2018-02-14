@@ -36,7 +36,5 @@ module.exports = {
 
       version: new format()
     }
-
   },
-
 };
