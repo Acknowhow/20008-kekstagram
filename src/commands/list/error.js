@@ -4,8 +4,8 @@ module.exports = {
 
   execute(command) {
     return [
-      `Неизвестная команда {{ ${command} }}`,
-      `Чтобы прочитать правила использования приложения, наберите "--help"`
+      `Unknown command {{ ${command} }}`,
+      `Type '--help' to list available commands and description`
     ];
   }
 };

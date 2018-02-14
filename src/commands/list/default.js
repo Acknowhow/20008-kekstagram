@@ -4,9 +4,9 @@ module.exports = {
 
   execute(app, author) {
     return [
-      `Привет пользователь!`,
-      `Эта программа будет запускать сервер «{{ ${app} }}».`,
-      `${author}`
+      `Hello user!`,
+      `This program triggers «{{ ${app} }}» server.`,
+      `Developed by: ${author}`
     ];
   }
 };

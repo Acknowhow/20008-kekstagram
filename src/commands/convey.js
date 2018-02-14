@@ -1,40 +1,68 @@
 module.exports = {
-  style() {
+  convey() {
+    // concrete
     const json = require(`./../../package.json`);
     const util = require(`util`);
-    const colorize  = require(`./../builder/color`);
-    const format = require(`./../builder/format`);
+
+    // builder
+    const colorize = require(`./../builder/color`);
+    const Format = require(`./../builder/format`);
 
     // commands
+    const def = require(`./list/default`);
     const author = require(`./list/author`);
+
     const help = require(`./list/help`);
+    const version = require(`./list/version`);
 
-    // split version to colorize it
-    const versionN = json.version.split(`.`);
+    const description = require(`./list/description`);
+    const error = require(`./list/error`);
 
-    console.log(colorize.color(versionN[0], `regexp`, util));
+    // C stands for `colorized`
+    const appC = colorize.color(json.name, `name`, util);
+    const authorC = colorize.color(json.author, null, util);
 
-    // [colorize] N stands for command name, D for description
-    const authorN = colorize.color(`Вадим Корабельник`, null, util);
+    const split = json.version.split(`.`);
 
-    const helpD = [colorize.color(`help`, `grey`, util),
-      colorize.color(`вывод всех доступных команд;`, `green`, util)];
+    const majorC = colorize.color(split[0], `regexp`, util);
+    const minorC = colorize.color(split[1], `string`, util);
+    const patchC = colorize.color(split[2], `boolean`, util);
 
-    const versionD = [colorize.color(`version`, `grey`, util),
-      colorize.color(`версия приложения;`, `green`, util)];
+    const versionC = majorC + `.` + minorC + `.` + patchC;
+    const descriptionC = colorize.color(json.description, null, util);
 
-    const authorD = [colorize.color(`author`, `grey`, util),
-      colorize.color(`автор приложения;`, `green`, util)];
+    // all commands list
+    const helpHelpC = [colorize.color(help.name, `undefined`, util),
+      colorize.color(help.description, `string`, util)];
 
-    const descriptionD = [colorize.color(`description`, `grey`, util),
-      colorize.color(`описание приложения;`, `green`, util)];
+    const helpVersionC = [colorize.color(version.name, `undefined`, util),
+      colorize.color(version.description, `string`, util)];
+
+    const helpAuthorC = [colorize.color(author.name, `undefined`, util),
+      colorize.color(author.description, `string`, util)];
+
+    const helpDescriptionC = [colorize.color(description.name, `undefined`, util),
+      colorize.color(description.description, `string`, util)];
 
     return {
-      author: new format(author.execute(authorN), util).format(),
 
-      help: new format(help.execute(helpD, versionD, authorD, descriptionD), util).format(),
+      def: new Format(def.execute(
+        appC, authorC), util).format(),
 
-      version: new format()
-    }
-  },
+      author: new Format(author.execute(
+        authorC), util).format(),
+
+      help: new Format(help.execute(helpHelpC, helpVersionC,
+        helpAuthorC, helpDescriptionC), util).format(),
+
+      version: new Format(version.execute(
+        versionC), util).format(),
+
+      description: new Format(description.execute(
+        descriptionC), util).format(),
+
+      error: (command) => colorize.color(`${new Format(error.execute(
+        command), util).format()}`, `regexp`, util)
+    };
+  }
 };

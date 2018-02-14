@@ -1,15 +1,15 @@
 module.exports = {
-  name: `--help`,
-  description: `Shows all commands`,
+  name: `help`,
+  description: `list available commands`,
 
   execute(help, version, author, description) {
     return [
-      `Доступные команды:`,
+      `Available commands:`,
 
-      `--${help[0]}        – ${help[1]}`,
-      `--${version[0]}     – ${version[1]}`,
-      `--${author[0]}      – ${author[1]}`,
-      `--${description[0]} – ${description[1]}`
+      `--${help[0]}         – ${help[1]}`,
+      `--${version[0]}      – ${version[1]}`,
+      `--${author[0]}       – ${author[1]}`,
+      `--${description[0]}  – ${description[1]}`
     ];
   }
 };
