@@ -14,6 +14,8 @@ module.exports = {
     const _help = [colorize.color(`help`, `grey`, util),
       colorize.color(`вывод всех доступных команд;`, `green`, util)];
 
+    console.log(_help);
+
     const _version = [colorize.color(`version`, `grey`, util),
       colorize.color(`версия приложения;`, `green`, util)];
 
