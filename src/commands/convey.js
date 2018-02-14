@@ -47,22 +47,22 @@ module.exports = {
     return {
 
       def: new Format(def.execute(
-        appC, authorC), util).format(),
+          appC, authorC), util).format(),
 
       author: new Format(author.execute(
-        authorC), util).format(),
+          authorC), util).format(),
 
       help: new Format(help.execute(helpHelpC, helpVersionC,
-        helpAuthorC, helpDescriptionC), util).format(),
+          helpAuthorC, helpDescriptionC), util).format(),
 
       version: new Format(version.execute(
-        versionC), util).format(),
+          versionC), util).format(),
 
       description: new Format(description.execute(
-        descriptionC), util).format(),
+          descriptionC), util).format(),
 
       error: (command) => colorize.color(`${new Format(error.execute(
-        command), util).format()}`, `regexp`, util)
+          command), util).format()}`, `regexp`, util)
     };
   }
 };
