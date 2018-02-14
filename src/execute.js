@@ -16,7 +16,7 @@ module.exports = {
 
     const convey = require(`./../src/commands/convey`).style();
 
-    console.log(convey[`inner`]);
+    console.log(convey[`help`]);
     // commands
     const cAuthor = require(`./commands/list/author`);
     const cDefault = require(`./commands/list/default`);
@@ -38,7 +38,6 @@ module.exports = {
 
     // console.log(major);
 
-
     process.on(`exit`, (code) => {
       console.log(`Exit code: ${code}`);
     });
@@ -49,7 +48,7 @@ module.exports = {
       console.log(new Format(cDefault.execute(
 
           app, util.inspect(
-              authorCl, {colors: true})), util).output());
+              authorCl, {colors: true})), util).format());
 
       process.exit(0);
     } else {
@@ -58,28 +57,28 @@ module.exports = {
 
         case `--description`:
           console.log(new Format(cDescription.execute(
-              json.description), util).output());
+              json.description), util).format());
 
           process.exit(0);
           break;
 
         case `--author`:
           console.log(new Format(cAuthor.execute(
-              json.author), util).output());
+              json.author), util).format());
 
           process.exit(0);
           break;
 
         case `--help`:
           console.log(new Format(cHelp.execute(
-          ), util).output());
+          ), util).format());
 
           process.exit(0);
           break;
 
         case `--version`:
           console.log(new Format(cVersion.execute(
-              json.version), util).output());
+              json.version), util).format());
 
           process.exit(0);
           break;
@@ -90,11 +89,11 @@ module.exports = {
           console.error(util.inspect(
               new Color(new Format(
 
-                  cError.execute(args[0]), util).output(),
+                  cError.execute(args[0]), util).format(),
               `regexp`), {colors: true}));
 
           // then display all available commands
-          console.log(new Format(cHelp.execute(), util).output());
+          console.log(new Format(cHelp.execute(), util).format());
           process.exit(1);
       }
     }

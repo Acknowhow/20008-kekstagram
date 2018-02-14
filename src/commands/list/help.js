@@ -2,13 +2,14 @@ module.exports = {
   name: `--help`,
   description: `Shows all commands`,
 
-  execute() {
+  execute(help, version, author, description) {
     return [
       `Доступные команды:`,
-      `--help        – вывод всех доступных команд;`,
-      `--version     – версия приложения;`,
-      `--author      – права на разработку;`,
-      `--description – описание приложения;`
+
+      `--${help[0]}        – ${help[1]}`,
+      `--${version[0]}     – ${version[1]}`,
+      `--${author[0]}      – ${author[1]}`,
+      `--${description[0]} – ${description[1]}`
     ];
   }
 };
