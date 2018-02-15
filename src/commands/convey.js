@@ -22,13 +22,12 @@ module.exports = {
     const appC = colorize.color(json.name, `name`, util);
     const authorC = colorize.color(json.author, null, util);
 
-    const split = json.version.split(`.`);
+    const [majorC, minorC, patchC] = json.version.split(`.`);
 
-    const majorC = colorize.color(split[0], `regexp`, util);
-    const minorC = colorize.color(split[1], `string`, util);
-    const patchC = colorize.color(split[2], `boolean`, util);
+    const versionC = colorize.color(majorC, `regexp`, util) +
+        `.` + colorize.color(minorC, `string`, util) +
+        `.` + colorize.color(patchC, `boolean`, util);
 
-    const versionC = majorC + `.` + minorC + `.` + patchC;
     const descriptionC = colorize.color(json.description, null, util);
 
     // all commands list
