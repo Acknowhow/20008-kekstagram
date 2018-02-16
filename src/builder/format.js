@@ -4,14 +4,14 @@ class Format {
     this._util = util;
   }
 
-  output() {
+  format() {
     return this._util.format(
-        this._format(), ...this._input
+        this.get(), ...this._input
     );
   }
 
   // get format options
-  _format() {
+  get() {
     return this._input.map((val, index, array) => {
 
       if (index === array.length - 1) {

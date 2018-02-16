@@ -1,6 +1,6 @@
 module.exports = {
-  name: `--author`,
-  description: `Shows app author`,
+  name: `author`,
+  description: `program developer`,
 
   execute(author) {
     return [

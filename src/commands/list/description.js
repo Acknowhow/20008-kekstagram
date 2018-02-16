@@ -1,6 +1,6 @@
 module.exports = {
-  name: `--description`,
-  description: `Shows app description`,
+  name: `description`,
+  description: `about this program`,
 
   execute(description) {
     return [

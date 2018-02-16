@@ -1,84 +1,44 @@
-module.exports = {
-  exec() {
+const convey = require(`./../src/commands/convey`);
+const args = process.argv.slice(2);
 
-    const json = require(`../package.json`);
-    const util = require(`util`);
+exports.exec = () => {
 
-    const Color = require(`./../lib/color`);
-    const Format = require(`./builder/format`);
+  process.on(`exit`, (code) => {
+    console.log(`Exit code: ${code}`);
+  });
 
-    // commands
-    const cAuthor = require(`./commands/author`);
-    const cDefault = require(`./commands/default`);
+  if (!args[0]) {
+    console.log(convey.convey()[`def`]);
 
-    const cDescription = require(`./commands/description`);
-    const cError = require(`./commands/error`);
+    process.exit(0);
+  } else {
 
-    const cHelp = require(`./commands/help`);
-    const cVersion = require(`./commands/help`);
+    switch (args[0]) {
 
-    const args = process.argv.slice(2);
-    const app = json.name;
+      case `--description`:
+        console.log(convey.convey()[`description`]);
+        process.exit(0);
+        break;
 
-    const authorCl = new Color(`Автор: Кекс`, null);
+      case `--author`:
+        console.log(convey.convey()[`author`]);
+        process.exit(0);
+        break;
 
-    process.on(`exit`, (code) => {
-      console.log(`Exit code: ${code}`);
-    });
+      case `--help`:
+        console.log(convey.convey()[`help`]);
+        process.exit(0);
+        break;
 
-    // default
-    if (!args[0]) {
-      console.log(new Format(cDefault.execute(
+      case `--version`:
+        console.log(convey.convey()[`version`]);
+        process.exit(0);
+        break;
 
-          app, util.inspect(
-              authorCl, {colors: true})), util).output());
-
-      process.exit(0);
-    } else {
-
-      switch (args[0]) {
-
-        case `--description`:
-          console.log(new Format(cDescription.execute(
-              json.description), util).output());
-
-          process.exit(0);
-          break;
-
-        case `--author`:
-          console.log(new Format(cAuthor.execute(
-              json.author), util).output());
-
-          process.exit(0);
-          break;
-
-        case `--help`:
-          console.log(new Format(cHelp.execute(
-          ), util).output());
-
-          process.exit(0);
-          break;
-
-        case `--version`:
-          console.log(new Format(cVersion.execute(
-              json.version), util).output());
-
-          process.exit(0);
-          break;
-
-        // wrong command
-        default:
-          // first display error message
-          console.error(util.inspect(
-              new Color(new Format(
-
-                  cError.execute(args[0]), util).output(),
-              `regexp`), {colors: true}));
-
-          // then display all available commands
-          console.log(new Format(cHelp.execute(), util).output());
-          process.exit(1);
-      }
+      default:
+        console.error(convey.convey()[`error`](args[0]));
+        console.log(convey.convey()[`help`]);
+        process.exit(1);
     }
   }
 };
