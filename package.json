@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test:lint": "eslint .",
-    "test": "npm run test:lint"
+    "test:mocha": "mocha",
+    "test": "npm run test:lint && npm run test:mocha"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,8 @@
   "devDependencies": {
     "eslint": "4.17.0",
     "eslint-config-htmlacademy": "0.4.2"
+  },
+  "dependencies": {
+    "mocha": "5.0.1"
   }
 }
